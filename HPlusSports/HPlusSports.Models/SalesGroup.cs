@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Project.Models
+namespace HPlusSports.Models
 {
-    public partial class SalesGroup
+    public partial class SalesGroup : Entity
     {
         public SalesGroup()
         {
             Salespeople = new HashSet<Salesperson>();
         }
-        public int Id { get; set; }
         public string State { get; set; }
         public int Type { get; set; }
 

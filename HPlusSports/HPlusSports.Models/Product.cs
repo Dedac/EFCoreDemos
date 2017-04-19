@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Project.Models
+namespace HPlusSports.Models
 {
-    public partial class Product
+    public partial class Product : Entity
     {
         public Product()
         {
            
         }
 
-        public string ProductId { get; set; }
         public string ProductName { get; set; }
         public int? Size { get; set; }
         public string Variety { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Project.Models
+namespace HPlusSports.Models
 {
     public partial class OrderItem
     {

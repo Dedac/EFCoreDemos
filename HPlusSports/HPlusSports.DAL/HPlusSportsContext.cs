@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Project.Models
+namespace HPlusSports.Models
 {
     public partial class HPlusSportsContext : DbContext
     {
@@ -14,7 +14,7 @@ namespace Project.Models
         {
             modelBuilder.Entity<Customer>(entity =>
             {
-                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+                entity.Property(e => e.Id).HasColumnName("CustomerID");
 
                 entity.HasIndex(e => e.LastName);
              
@@ -57,7 +57,7 @@ namespace Project.Models
                 entity.HasIndex(e => e.OrderDate)
                     .HasName("IX_Order");
 
-                entity.Property(e => e.OrderId).HasColumnName("OrderID");
+                entity.Property(e => e.Id).HasColumnName("OrderID");
 
                 entity.Property(e => e.CreatedDate)
                     .HasColumnType("datetime")
@@ -115,7 +115,7 @@ namespace Project.Models
 
             modelBuilder.Entity<Product>(entity =>
             {
-                entity.Property(e => e.ProductId)
+                entity.Property(e => e.Id)
                     .HasColumnName("ProductID")
                     .HasMaxLength(10);
 
@@ -151,7 +151,7 @@ namespace Project.Models
 
             modelBuilder.Entity<Salesperson>(entity =>
             {
-                entity.Property(e => e.SalespersonId)
+                entity.Property(e => e.Id)
                     .HasColumnName("SalespersonID")
                     .ValueGeneratedOnAdd();
 

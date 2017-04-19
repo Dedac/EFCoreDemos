@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Project.Models
+namespace HPlusSports.Models
 {
-    public partial class Order
+    public partial class Order : Entity
     {
         public Order()
         {
             OrderItem = new HashSet<OrderItem>();
         }
 
-        public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
         public decimal? TotalDue { get; set; }
         public string Status { get; set; }

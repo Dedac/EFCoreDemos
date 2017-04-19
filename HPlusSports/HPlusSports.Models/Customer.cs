@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Project.Models
+namespace HPlusSports.Models
 {
-    public partial class Customer
+    public partial class Customer : Entity
     {
         public Customer()
         {
             Order = new HashSet<Order>();
         }
 
-        public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         private string customerEmail;
