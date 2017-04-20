@@ -1,15 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HPlusSports.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace HPlusSports.Models
+namespace HPlusSports.DAL
 {
     public partial class HPlusSportsContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HPlusSports;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-        }
-        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>(entity =>
@@ -50,6 +46,9 @@ namespace HPlusSports.Models
                 entity.Property(e => e.Zipcode)
                     .HasColumnName("str_fld_Zipcode")
                     .HasColumnType("varchar(50)");
+
+                entity.Property(e => e.Deleted);
+                 
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -87,6 +86,8 @@ namespace HPlusSports.Models
                     .HasForeignKey(d => d.SalespersonId)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("FK_Order_Salesperson");
+
+                entity.Property(e => e.Deleted);
             });
 
             modelBuilder.Entity<OrderItem>(entity =>
@@ -132,6 +133,9 @@ namespace HPlusSports.Models
                 entity.Property(e => e.Status).HasColumnType("varchar(50)");
 
                 entity.Property(e => e.Variety).HasColumnType("varchar(50)");
+
+                entity.Property(e => e.Deleted);
+
             });
 
             modelBuilder.Entity<SalesGroup>(entity =>
@@ -147,6 +151,8 @@ namespace HPlusSports.Models
                 entity.HasMany(e => e.Salespeople)
                 .WithOne(e => e.SalesGroup)
                 .HasPrincipalKey(e => new { e.State, e.Type });
+
+                entity.Property(e => e.Deleted);
             });
 
             modelBuilder.Entity<Salesperson>(entity =>
@@ -177,6 +183,8 @@ namespace HPlusSports.Models
                 entity.Property<string>("State").HasColumnType("varchar(50)");
 
                 entity.Property<string>("Zipcode").HasColumnType("varchar(50)");
+
+                entity.Property(e => e.Deleted);
 
                 entity.Ignore(s => s.FullName);
             });

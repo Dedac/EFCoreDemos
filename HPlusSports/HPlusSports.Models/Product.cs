@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HPlusSports.Models
 {
-    public partial class Product : Entity
+    public partial class Product : TrackedEntity
     {
         public Product()
         {
