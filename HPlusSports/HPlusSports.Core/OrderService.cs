@@ -15,7 +15,7 @@ namespace HPlusSports.Core
 
         public async Task<IList<Order>>  GetCustomerOrders(int CustomerId)
         {
-            return await _orderRepo.Get(o => o.CustomerId == CustomerId, o => o.OrderDate);
+            return await _orderRepo.Get(o => o.CustomerId > CustomerId, o => o.OrderDate);
         }
     }
 }

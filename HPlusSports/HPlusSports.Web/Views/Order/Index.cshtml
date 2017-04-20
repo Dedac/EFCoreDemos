@@ -1,0 +1,8 @@
+@model HPlusSports.Web.ViewModels.OrderListViewModel
+<h2>Orders</h2>
+
+
+@foreach (var order in Model.Orders)
+{
+    <span>hi @order.SalespersonId</span>
+}

@@ -6,6 +6,8 @@ namespace HPlusSports.DAL
 {
     public partial class HPlusSportsContext : DbContext
     {
+        public HPlusSportsContext(DbContextOptions<HPlusSportsContext> options) : base(options) { }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>(entity =>
@@ -13,7 +15,7 @@ namespace HPlusSports.DAL
                 entity.Property(e => e.Id).HasColumnName("CustomerID");
 
                 entity.HasIndex(e => e.LastName);
-             
+
                 entity.Property(e => e.Address)
                     .HasColumnName("str_fld_Address")
                     .HasColumnType("varchar(50)");
@@ -48,7 +50,7 @@ namespace HPlusSports.DAL
                     .HasColumnType("varchar(50)");
 
                 entity.Property(e => e.Deleted);
-                 
+
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -110,14 +112,17 @@ namespace HPlusSports.DAL
                 entity.HasOne(d => d.Product)
                     .WithMany()
                     .HasForeignKey(d => d.ProductId)
+                    .HasPrincipalKey(p => p.ProductCode)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("FK_OrderItem_Product1");
             });
 
             modelBuilder.Entity<Product>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .HasColumnName("ProductID")
+                entity.Property(e => e.Id).HasColumnName("ProductId");
+
+                entity.Property(e => e.ProductCode)
+                    .HasColumnName("ProductCode")
                     .HasMaxLength(10);
 
                 entity.HasDiscriminator<bool>("Perishable")

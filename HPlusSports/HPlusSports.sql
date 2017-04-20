@@ -71,7 +71,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Product](
-	[ProductID] [nvarchar](10) NOT NULL,
+	[ProductId] [INT] IDENTITY(1700,1) NOT NULL, 
+	[ProductCode] [nvarchar](10) NOT NULL,
 	[ProductName] [varchar](50) NULL,
 	[Size] [int] NULL,
 	[Variety] [varchar](50) NULL,
@@ -1854,27 +1855,27 @@ INSERT [dbo].[OrderItem] ([OrderItemID], [OrderID], [ProductID], [Quantity]) VAL
 INSERT [dbo].[OrderItem] ([OrderItemID], [OrderID], [ProductID], [Quantity]) VALUES (1498, 1165, N'MWBLU20', 6)
 INSERT [dbo].[OrderItem] ([OrderItemID], [OrderID], [ProductID], [Quantity]) VALUES (1499, 1088, N'MWBLU32', 6)
 SET IDENTITY_INSERT [dbo].[OrderItem] OFF
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'HMGAR16', N'Hummus', 16, N'Garlic', 2.2100, N'ACTIVE', 1, 20, 1)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'HMPEP16', N'Hummus', 16, N'Pepper', 2.3100, N'ACTIVE', 1, 20, 1)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MKCHO8', N'Milk', 8, N'Chocolate', 4.5500, N'ACTIVE', 1, 10, 1)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MKHAL8', N'Milk', 8, N'1%', 4.2300, N'ACTIVE', 1, 14, 1)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MKWHO8', N'Milk', 8, N'Whole', 4.3300, N'ACTIVE', 1, 14, 1)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWBLU20', N'Mineral Water', 20, N'Blueberry', 1.7900, N'ACTIVE', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWBLU32', N'Mineral Water', 32, N'Blueberry', 3.6900, N'ACTIVE', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWCRA20', N'Mineral Water', 20, N'Cranberry', 1.7900, N'DISCONTINUED', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWCRA32', N'Mineral Water', 32, N'Cranberry', 3.6900, N'DISCONTINUED', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWLEM20', N'Mineral Water', 20, N'Lemon-Lime', 1.7900, N'ACTIVE', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWLEM32', N'Mineral Water', 32, N'Lemon-Lime', 3.6900, N'ACTIVE', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWMAN20', N'Mineral Water', 20, N'Mango', 1.7900, N'DISCONTINUED', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWMAN32', N'Mineral Water', 32, N'Mango', 3.6900, N'DISCONTINUED', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWORG20', N'Mineral Water', 20, N'Orange', 1.7900, N'ACTIVE', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWORG32', N'Mineral Water', 32, N'Orange', 3.6900, N'ACTIVE', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWPEA20', N'Mineral Water', 20, N'Peach', 1.7900, N'ACTIVE', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWPEA32', N'Mineral Water', 32, N'Peach', 3.6900, N'ACTIVE', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWRAS20', N'Mineral Water', 20, N'Raspberry', 1.7900, N'ACTIVE', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWRAS32', N'Mineral Water', 32, N'Raspberry', 3.6900, N'ACTIVE', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWSTR20', N'Mineral Water', 20, N'Strawberry', 1.7900, N'ACTIVE', 0, NULL, NULL)
-INSERT [dbo].[Product] ([ProductID], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWSTR32', N'Mineral Water', 32, N'Strawberry', 3.6900, N'ACTIVE', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'HMGAR16', N'Hummus', 16, N'Garlic', 2.2100, N'ACTIVE', 1, 20, 1)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'HMPEP16', N'Hummus', 16, N'Pepper', 2.3100, N'ACTIVE', 1, 20, 1)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MKCHO8', N'Milk', 8, N'Chocolate', 4.5500, N'ACTIVE', 1, 10, 1)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MKHAL8', N'Milk', 8, N'1%', 4.2300, N'ACTIVE', 1, 14, 1)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MKWHO8', N'Milk', 8, N'Whole', 4.3300, N'ACTIVE', 1, 14, 1)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWBLU20', N'Mineral Water', 20, N'Blueberry', 1.7900, N'ACTIVE', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWBLU32', N'Mineral Water', 32, N'Blueberry', 3.6900, N'ACTIVE', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWCRA20', N'Mineral Water', 20, N'Cranberry', 1.7900, N'DISCONTINUED', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWCRA32', N'Mineral Water', 32, N'Cranberry', 3.6900, N'DISCONTINUED', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWLEM20', N'Mineral Water', 20, N'Lemon-Lime', 1.7900, N'ACTIVE', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWLEM32', N'Mineral Water', 32, N'Lemon-Lime', 3.6900, N'ACTIVE', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWMAN20', N'Mineral Water', 20, N'Mango', 1.7900, N'DISCONTINUED', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWMAN32', N'Mineral Water', 32, N'Mango', 3.6900, N'DISCONTINUED', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWORG20', N'Mineral Water', 20, N'Orange', 1.7900, N'ACTIVE', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWORG32', N'Mineral Water', 32, N'Orange', 3.6900, N'ACTIVE', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWPEA20', N'Mineral Water', 20, N'Peach', 1.7900, N'ACTIVE', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWPEA32', N'Mineral Water', 32, N'Peach', 3.6900, N'ACTIVE', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWRAS20', N'Mineral Water', 20, N'Raspberry', 1.7900, N'ACTIVE', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWRAS32', N'Mineral Water', 32, N'Raspberry', 3.6900, N'ACTIVE', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWSTR20', N'Mineral Water', 20, N'Strawberry', 1.7900, N'ACTIVE', 0, NULL, NULL)
+INSERT [dbo].[Product] ([ProductCode], [ProductName], [Size], [Variety], [Price], [Status], [Perishable], [ExpirationDays], [Refrigerated]) VALUES (N'MWSTR32', N'Mineral Water', 32, N'Strawberry', 3.6900, N'ACTIVE', 0, NULL, NULL)
 SET IDENTITY_INSERT [dbo].[SalesGroup] ON 
 
 INSERT [dbo].[SalesGroup] ([Id], [State], [Type]) VALUES (1, N'CA', 1)
@@ -1976,7 +1977,7 @@ GO
 ALTER TABLE [dbo].[OrderItem] CHECK CONSTRAINT [FK_OrderItem_Order]
 GO
 ALTER TABLE [dbo].[OrderItem]  WITH CHECK ADD  CONSTRAINT [FK_OrderItem_Product1] FOREIGN KEY([ProductID])
-REFERENCES [dbo].[Product] ([ProductID])
+REFERENCES [dbo].[Product] ([ProductCode])
 GO
 ALTER TABLE [dbo].[OrderItem] CHECK CONSTRAINT [FK_OrderItem_Product1]
 GO

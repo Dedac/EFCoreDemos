@@ -9,7 +9,7 @@ namespace HPlusSports.Models
         {
            
         }
-
+        public string ProductCode { get; set; }
         public string ProductName { get; set; }
         public int? Size { get; set; }
         public string Variety { get; set; }
