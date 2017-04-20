@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPlusSports.Web", "HPlusSports.Web\HPlusSports.Web.csproj", "{7EAA00CC-1AC7-4382-A373-1735373A15DD}"
 EndProject
@@ -10,6 +10,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPlusSports.Models", "HPlusSports.Models\HPlusSports.Models.csproj", "{11F519EF-1D0D-41FF-9163-0A812B0EB201}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPlusSports.Core", "HPlusSports.Core\HPlusSports.Core.csproj", "{7D463B86-9C54-4425-8CAB-066ED1182F0B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{72630FFE-AE22-48D7-B76D-E134408E4287}"
+	ProjectSection(SolutionItems) = preProject
+		HPlusSports.sql = HPlusSports.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
