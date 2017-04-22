@@ -38,6 +38,7 @@ namespace HPlusSports.DAL
                 SalespersonId = orderInfo.SalesPersonId,
                 Status = "due",
                 TotalDue = orderInfo.products.Sum(p => p.Price * p.Quantity),
+                CreatedDate = DateTime.Now,
                 OrderItem = orderInfo.products.Select(p =>
                     {
                         return new OrderItem()
@@ -46,11 +47,10 @@ namespace HPlusSports.DAL
                             Quantity = p.Quantity
                         };
                     }).ToList()
+                  
             };
 
             _context.Attach(order);
-
-            await _context.SaveChangesAsync();
 
             return order;
         }

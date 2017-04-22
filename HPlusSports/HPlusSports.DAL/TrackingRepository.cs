@@ -52,7 +52,7 @@ namespace HPlusSports.DAL
 
         public virtual async Task<T> GetByID(int Id)
         {
-            return await _context.Set<T>().SingleOrDefaultAsync(e => e.Id == Id);
+            return await _context.Set<T>().FindAsync(Id);
         }
 
         public virtual void Save(T Item)
