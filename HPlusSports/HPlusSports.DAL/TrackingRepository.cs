@@ -1,5 +1,6 @@
 ﻿using HPlusSports.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,6 +69,11 @@ namespace HPlusSports.DAL
         public virtual Task SaveChanges()
         {
             return _context.SaveChangesAsync();
+        }
+
+        public virtual Task<IDbContextTransaction> StartTransaction()
+        {
+            return _context.Database.BeginTransactionAsync();
         }
     }
 }

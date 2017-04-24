@@ -26,5 +26,16 @@ namespace HPlusSports.Core
             _salesRepo.Save(person);
         }
 
+        public async Task AddGroupAndPerson(Salesperson person, SalesGroup group)
+        {
+            using (var transaction = await _salesRepo.StartTransaction())
+            {
+                _salesRepo.Add(person);
+                group.Salespeople.Add(person);
+                _salesGroupRepo.Add(group);
+                transaction.Commit();
+            }
+        }
+
     }
 }
