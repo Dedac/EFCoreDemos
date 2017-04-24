@@ -1,4 +1,5 @@
 ﻿using HPlusSports.Models;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace HPlusSports.DAL
         Task Delete(int PrimaryKey);
 
         Task SaveChanges();
+        Task<IDbContextTransaction> StartTransaction();
+
 
     }
 }
