@@ -40,9 +40,9 @@ namespace HPlusSports.DAL
             item.Deleted = true;
         }
 
-        public virtual async Task<List<T>> Get<T2>(Expression<Func<T, bool>> predicate, Expression<Func<T, T2>> order)
+        public virtual IQueryable<T> Get()
         {
-            return await _context.Set<T>().Where(e => !e.Deleted).Where(predicate).OrderBy(order).ToListAsync();
+            return _context.Set<T>().Where(e => !e.Deleted);
         }
 
         public virtual async Task<List<T>> GetAll()
