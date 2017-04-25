@@ -40,6 +40,13 @@ namespace HPlusSports.Web.Controllers
             return View("Index", vm);
         }
 
+        public async Task<ActionResult> LastMonth()
+        {
+            var vm = new OrderListViewModel();
+            vm.Orders = await _orderService.GetLastMonthsOrders();
+            return View("Index", vm);
+        }
+
         public async Task<ActionResult> Create()
         {
             var vm = new CreateOrderViewModel()

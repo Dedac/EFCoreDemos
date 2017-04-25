@@ -37,6 +37,15 @@ namespace HPlusSports.Core
                 .ToListAsync();
         }
 
+        public async Task<IList<Order>> GetLastMonthsOrders()
+        {
+            return await _context.Set<Order>()
+                .AsNoTracking()
+                .Include(o => o.Customer)
+                .Where(o => o.OrderDate > DateTime.Now.AddMonths(-1))
+                .ToListAsync();
+        }
+
         public async Task<Order> CreateOrder(int customerId, int salesPersonId, List<Tuple<string, int>> productsQuantities)
         {
             var order = await _orderRepo.Create(new NewOrderInformation()
