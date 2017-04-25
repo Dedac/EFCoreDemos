@@ -16,7 +16,10 @@ namespace HPlusSports.DAL
                  .AddDbContext<HPlusSportsContext>(options => options.UseSqlServer(connectionString));
 
             services
-                .AddScoped<IRepository<Order>, AtomicRepository<Order>>();
+                .AddScoped<IOrderRepository, OrderRepository>()
+                .AddScoped<IRepository<Customer>, AtomicRepository<Customer>>()
+                .AddScoped<IRepository<Product>, AtomicRepository<Product>>()
+                .AddScoped<ISalesPersonRepository, SalesPersonRepository>();
         }
     }
 }

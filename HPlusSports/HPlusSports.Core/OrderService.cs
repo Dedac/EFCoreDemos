@@ -21,12 +21,25 @@ namespace HPlusSports.Core
 
         public async Task<IList<Order>> GetCustomerOrders(int CustomerId)
         {
-            return await _context.Set<Order>().Where(o => o.CustomerId == CustomerId).ToListAsync();
+            return await _context.Set<Order>()
+                .AsNoTracking()
+                .Include(o => o.Customer)
+                .Where(o => o.CustomerId == CustomerId)
+                .ToListAsync();
+        }
+
+        public async Task<IList<Order>> GetOrdersWithCustomers()
+        {
+            return await _context.Set<Order>()
+                .AsNoTracking()
+                .Include(o => o.Customer)
+                .OrderByDescending(o => o.OrderDate)
+                .ToListAsync();
         }
 
         public async Task<Order> CreateOrder(int customerId, int salesPersonId, List<Tuple<string, int>> productsQuantities)
         {
-            return await _orderRepo.Create(new NewOrderInformation()
+            var order = await _orderRepo.Create(new NewOrderInformation()
             {
                 CustomerId = customerId,
                 SalesPersonId = salesPersonId,
@@ -40,6 +53,9 @@ namespace HPlusSports.Core
                     };
                 }).ToList()
             });
+
+            await _context.SaveChangesAsync();
+            return order;
         }
 
         private decimal GetPriceWithDiscounts(string productCode, int quantity)
