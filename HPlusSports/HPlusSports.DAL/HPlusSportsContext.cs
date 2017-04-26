@@ -55,9 +55,6 @@ namespace HPlusSports.DAL
 
             modelBuilder.Entity<Order>(entity =>
             {
-                entity.HasIndex(e => e.OrderDate)
-                    .HasName("IX_Order");
-
                 entity.Property(e => e.Id).HasColumnName("OrderID");
 
                 entity.Property(e => e.CreatedDate)
@@ -65,8 +62,6 @@ namespace HPlusSports.DAL
                     .HasDefaultValueSql("getdate()");
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
-
-                entity.Property(e => e.OrderDate).HasColumnType("datetime");
 
                 entity.Property(e => e.SalespersonId).HasColumnName("SalespersonID");
 
