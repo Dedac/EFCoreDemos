@@ -30,7 +30,7 @@ namespace HPlusSports.DAL
                 .ToListAsync();
         }
 
-        public async Task<Order> Create(NewOrderInformation orderInfo)
+        public Order Create(NewOrderInformation orderInfo)
         {
             var order = new Order()
             {
@@ -51,7 +51,7 @@ namespace HPlusSports.DAL
                   
             };
 
-            await _context.AddAsync(order);
+            _context.Add(order);
 
             return order;
         }

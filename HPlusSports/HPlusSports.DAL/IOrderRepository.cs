@@ -6,7 +6,7 @@ namespace HPlusSports.DAL
 {
     public interface IOrderRepository
     {
-        Task<Order> Create(NewOrderInformation orderInfo);
+        Order Create(NewOrderInformation orderInfo);
         Task<List<Order>> GetByCustomerPartialLastName(string lastName);
     }
 }

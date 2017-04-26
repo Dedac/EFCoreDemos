@@ -39,7 +39,7 @@ namespace HPlusSports.Core
 
         public async Task<Order> CreateOrder(int customerId, int salesPersonId, List<Tuple<string, int>> productsQuantities)
         {
-            var order = await _orderRepo.Create(new NewOrderInformation()
+            var order = _orderRepo.Create(new NewOrderInformation()
             {
                 CustomerId = customerId,
                 SalesPersonId = salesPersonId,
