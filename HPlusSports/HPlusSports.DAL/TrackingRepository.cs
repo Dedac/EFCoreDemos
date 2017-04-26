@@ -67,7 +67,16 @@ namespace HPlusSports.DAL
 
         public virtual Task SaveChanges()
         {
-            return _context.SaveChangesAsync();
+            try
+            {
+                return _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                //TODO database error handling logic
+                //e.g. email db admin
+                throw new ApplicationDataException("Database Error " + ex.Message);
+            }
         }
     }
 }
