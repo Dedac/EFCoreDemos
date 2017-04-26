@@ -33,7 +33,7 @@ namespace HPlusSports.Core
             return await _context.Set<Order>()
                 .AsNoTracking()
                 .Include(o => o.Customer)
-                .OrderByDescending(o => o.OrderDate)
+                .OrderByDescending(o => o.CreatedDate)
                 .ToListAsync();
         }
 

@@ -20,7 +20,7 @@
                 <td><a asp-action="Customer" asp-route-id="@order.Customer.Id" >@order.Customer.FirstName @order.Customer.LastName</a></td>
                 <td> @order.TotalDue?.ToString("f2") </td>
                 <td> @order.Status </td>
-                <td> @order.OrderDate.ToString("d") </td>
+                <td> @order.CreatedDate.ToString("d") </td>
             </tr>
         }
     </tbody>

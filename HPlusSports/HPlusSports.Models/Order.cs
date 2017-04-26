@@ -10,7 +10,6 @@ namespace HPlusSports.Models
             OrderItem = new HashSet<OrderItem>();
         }
 
-        public DateTime OrderDate { get; set; }
         public decimal? TotalDue { get; set; }
         public string Status { get; set; }
         public int CustomerId { get; set; }
