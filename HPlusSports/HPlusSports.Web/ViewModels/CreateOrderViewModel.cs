@@ -15,6 +15,8 @@ namespace HPlusSports.Web.ViewModels
         public int CustomerId { get; set; }
         public List<SelectListItem> SalesPeople { get; set; }
         public int SalesPersonId { get; set; }
+
+        public string ErrorMessage { get; set; }
         
     }
 }

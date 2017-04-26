@@ -58,11 +58,20 @@ namespace HPlusSports.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateOrder(CreateOrderViewModel order)
         {
-            await _orderService.CreateOrder(
+            var neworder = await _orderService.CreateOrder(
                 order.CustomerId,
                 order.SalesPersonId,
                 order.SelectedProductCodes.Select(pc => Tuple.Create(pc, 1)).ToList());
-            return Redirect("Index");
+
+            if (neworder.Id == 0)
+            {
+                order.ErrorMessage = "oops";
+                return View("Create", order);
+            }
+            else
+            {
+                return Redirect("Index");
+            }
         }
 
     }

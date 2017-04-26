@@ -53,8 +53,17 @@ namespace HPlusSports.Core
                     };
                 }).ToList()
             });
+            order.CustomerId = -1;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                //Handle the error
+                order.Id = 0;
+            }
 
-            await _context.SaveChangesAsync();
             return order;
         }
 
