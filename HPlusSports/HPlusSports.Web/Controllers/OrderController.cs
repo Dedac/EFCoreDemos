@@ -73,8 +73,11 @@ namespace HPlusSports.Web.Controllers
 
         public async Task<ActionResult> MarkPaid(int id, decimal price)
         {
-            ViewBag["ErrorMessage"] = await _orderService.MarkPaid(id, price);
-            return Redirect("Index");
+            var error = await _orderService.MarkPaid(id, price);
+            if (string.IsNullOrWhiteSpace(error))
+                return View("Error", error);
+            else
+                return Redirect("Index");
         }
 
     }
