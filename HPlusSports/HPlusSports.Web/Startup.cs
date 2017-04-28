@@ -31,6 +31,8 @@ namespace HPlusSports.Web
             DAL.Configure.ConfigureServices(services, Configuration.GetConnectionString("DefaultConnection"));
 
             Core.Configure.ConfigureServices(services);
+
+            services.AddMemoryCache();
           
             // Add framework services.
             services.AddMvc();

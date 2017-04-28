@@ -1,6 +1,7 @@
 ﻿using HPlusSports.DAL;
 using HPlusSports.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,13 @@ namespace HPlusSports.Core
     {
         IOrderRepository _orderRepo;
         HPlusSportsContext _context;
+        IMemoryCache _cache;
 
-        public OrderService(IOrderRepository orderRepo, HPlusSportsContext context)
+        public OrderService(IOrderRepository orderRepo, HPlusSportsContext context, IMemoryCache cache)
         {
             _orderRepo = orderRepo;
             _context = context;
+            _cache = cache;
         }
 
         public async Task<IList<Order>> GetCustomerOrders(int CustomerId)
@@ -30,11 +33,12 @@ namespace HPlusSports.Core
 
         public async Task<IList<Order>> GetOrdersWithCustomers()
         {
-            return await _context.Set<Order>()
+            return await _cache.GetOrCreateAsync("CustomerOrderSet", (entry) =>               
+                _context.Set<Order>()
                 .AsNoTracking()
                 .Include(o => o.Customer)
                 .OrderByDescending(o => o.OrderDate)
-                .ToListAsync();
+                .ToListAsync());
         }
 
         public async Task<Order> CreateOrder(int customerId, int salesPersonId, List<Tuple<string, int>> productsQuantities)
@@ -55,6 +59,9 @@ namespace HPlusSports.Core
             });
 
             await _context.SaveChangesAsync();
+
+            _cache.Remove("CustomerOrderSet");
+
             return order;
         }
 
