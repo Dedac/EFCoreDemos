@@ -68,16 +68,16 @@ namespace HPlusSports.Web.Controllers
         public async Task<ActionResult> UpdatePrice(int id, decimal price)
         {
             await _orderService.UpdatePrice(id, price);
-            return Redirect("Index");
+            return Redirect("/Order/Index");
         }
 
         public async Task<ActionResult> MarkPaid(int id, decimal price)
         {
             var error = await _orderService.MarkPaid(id, price);
-            if (string.IsNullOrWhiteSpace(error))
+            if (!string.IsNullOrWhiteSpace(error))
                 return View("Error", error);
             else
-                return Redirect("Index");
+                return Redirect("/Order/Index");
         }
 
     }
