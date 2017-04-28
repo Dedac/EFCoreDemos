@@ -67,5 +67,34 @@ namespace HPlusSports.Core
                 return product.Price ?? 1;
 
         }
+
+        public async Task UpdatePrice(int id, decimal newPrice)
+        {
+            var order = await _context.Order.FindAsync(id);
+            order.TotalDue = newPrice;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<string> MarkPaid(int id, decimal amount)
+        {
+            var order = await _context.Order.FindAsync(id);
+            //Since this is a web application we can set the original value 
+            //we are paying for in entity framework, so that ef knows the value
+            //is changed when saving
+            _context.Entry(order).Property("TotalDue").OriginalValue = amount;
+
+            try
+            {
+                order.Status = "Paid";
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                //Handle concurrency programatically here if possible
+                return "The price doesn't match the current price on the order, please try again.";
+            }
+            return ""; //Do something better that returning a non-empty string to indicate success
+           
+        }
     }
 }

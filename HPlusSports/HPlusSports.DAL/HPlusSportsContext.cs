@@ -75,7 +75,7 @@ namespace HPlusSports.DAL
                     .HasColumnType("varchar(50)")
                     .HasDefaultValueSql("'none'");
 
-                entity.Property(e => e.TotalDue).HasColumnType("money");
+                entity.Property(e => e.TotalDue).HasColumnType("money").IsConcurrencyToken();
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Order)

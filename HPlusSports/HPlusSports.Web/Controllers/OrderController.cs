@@ -64,6 +64,18 @@ namespace HPlusSports.Web.Controllers
                 order.SelectedProductCodes.Select(pc => Tuple.Create(pc, 1)).ToList());
             return Redirect("Index");
         }
+        
+        public async Task<ActionResult> UpdatePrice(int id, decimal price)
+        {
+            await _orderService.UpdatePrice(id, price);
+            return Redirect("Index");
+        }
+
+        public async Task<ActionResult> MarkPaid(int id, decimal price)
+        {
+            ViewBag["ErrorMessage"] = await _orderService.MarkPaid(id, price);
+            return Redirect("Index");
+        }
 
     }
 }
