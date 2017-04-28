@@ -67,5 +67,30 @@ namespace HPlusSports.Core
                 return product.Price ?? 1;
 
         }
+
+        public async Task UpdatePrice(int id, decimal newPrice)
+        {
+            var order = await _context.Order.FindAsync(id);
+            order.TotalDue = newPrice;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<string> MarkPaid(int id, decimal amount)
+        {
+            var order = await _context.Order.FindAsync(id);
+            _context.Entry(order).Property("TotalDue").OriginalValue = amount;
+
+            try
+            {
+                order.Status = "paid";
+                await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateConcurrencyException)
+            {
+                //Handle Concurrency Here
+                return "The price for which the order is paid is no longer accurate, please go back and try again";
+            }
+            return "";
+        }
     }
 }

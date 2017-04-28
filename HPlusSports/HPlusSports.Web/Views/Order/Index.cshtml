@@ -1,5 +1,5 @@
 @model HPlusSports.Web.ViewModels.OrderListViewModel
-@{ 
+@{
     ViewBag.Title = "Orders";
 }
 <h2>Orders</h2>
@@ -11,16 +11,32 @@
             <td> Total Due </td>
             <td> Status </td>
             <td> Order Date </td>
+            <td> Mark Paid </td>
+            <td> 10% Discount </td>
         </tr>
     </thead>
     <tbody>
         @foreach (var order in Model.Orders)
         {
             <tr>
-                <td><a asp-action="Customer" asp-route-id="@order.Customer.Id" >@order.Customer.FirstName @order.Customer.LastName</a></td>
+                <td><a asp-action="Customer" asp-route-id="@order.Customer.Id">@order.Customer.FirstName @order.Customer.LastName</a></td>
                 <td> @order.TotalDue?.ToString("f2") </td>
                 <td> @order.Status </td>
                 <td> @order.OrderDate.ToString("d") </td>
+                <td>
+                    <a asp-action="MarkPaid"
+                       asp-route-id="@order.Id"
+                       asp-route-price="@order.TotalDue">
+                        Pay Order
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="UpdatePrice"
+                       asp-route-id="@order.Id"
+                       asp-route-price="@(order.TotalDue.HasValue ? order.TotalDue.Value * .90m : 0m)">
+                        10% Discout
+                    </a>
+                </td>
             </tr>
         }
     </tbody>
