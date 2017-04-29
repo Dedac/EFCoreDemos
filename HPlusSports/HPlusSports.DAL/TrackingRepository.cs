@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -67,6 +68,12 @@ namespace HPlusSports.DAL
 
         public virtual Task SaveChanges()
         {
+            foreach (var entity in _context.ChangeTracker.Entries()
+                .Where(e => e.State == EntityState.Added || e.State ==EntityState.Modified)
+                .Select(e => e.Entity))
+            {
+                Validator.ValidateObject(entity, new ValidationContext(entity));
+            }
             return _context.SaveChangesAsync();
         }
     }

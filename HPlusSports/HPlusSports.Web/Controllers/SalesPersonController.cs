@@ -40,7 +40,7 @@ namespace HPlusSports.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(EditSalespersonViewModel vm)
         {
-            ValidateBusinessModel(vm.GetPerson(), ModelState);
+            //ValidateBusinessModel(vm.GetPerson(), ModelState);
             if (!ModelState.IsValid) return View(vm);
 
             await _salesPersonService.UpdateSalesPersonContact(vm.GetPerson());
