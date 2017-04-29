@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HPlusSports.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace HPlusSports.Web.ViewModels
 {
@@ -20,7 +21,9 @@ namespace HPlusSports.Web.ViewModels
         }
 
         public int Id { get { return _person.Id; }  set { _person.Id = value; } }
+        [Required]
         public string FirstName { get { return _person.FirstName; } set { _person.FirstName = value; } }
+        [Required]
         public string LastName { get { return _person.LastName; } set { _person.LastName = value; } }
         public string Email { get { return _person.Email; } set { _person.Email = value; } }
         public string Phone { get { return _person.Phone; } set { _person.Phone = value; } }

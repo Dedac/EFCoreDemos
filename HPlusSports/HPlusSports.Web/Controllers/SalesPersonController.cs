@@ -9,6 +9,8 @@ using HPlusSports.Web.ViewModels;
 using HPlusSports.Models;
 using HPlusSports.DAL;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace HPlusSports.Web.Controllers
 {
@@ -31,17 +33,30 @@ namespace HPlusSports.Web.Controllers
         public async Task<ActionResult> Edit(int Id)
         {
             var person = await _salesPersonRepo.GetByID(Id);
-            
+
             return View(new EditSalespersonViewModel(person));
         }
 
         [HttpPost]
         public async Task<ActionResult> Edit(EditSalespersonViewModel vm)
         {
+            ValidateBusinessModel(vm.GetPerson(), ModelState);
+            if (!ModelState.IsValid) return View(vm);
+
             await _salesPersonService.UpdateSalesPersonContact(vm.GetPerson());
 
             return Redirect("/SalesPerson/Index");
         }
 
+        private void ValidateBusinessModel<T>(T model, ModelStateDictionary modelState)
+        {
+            var vc = new ValidationContext(model);
+            var validations = new List<ValidationResult>();
+            if (!Validator.TryValidateObject(model, vc, validations))
+            {
+                foreach (var validation in validations)
+                    ModelState.AddModelError(validation.MemberNames.First(), validation.ErrorMessage);
+            }
+        }
     }
 }
