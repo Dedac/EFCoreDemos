@@ -5,35 +5,35 @@
 
 <h2>Edit</h2>
 <form asp-action="Edit">
-    <input asp-for="Person.Id" type="hidden" />
+    <input asp-for="Id" type="hidden" />
     <div class="form-horizontal">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Person.FirstName" class="col-md-2 control-label"></label>
+            <label asp-for="FirstName" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Person.FirstName" class="form-control" />
-                <span asp-validation-for="Person.FirstName" class="text-danger"></span>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Person.LastName" class="col-md-2 control-label"></label>
+            <label asp-for="LastName" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Person.LastName" class="form-control" />
-                <span asp-validation-for="Person.LastName" class="text-danger"></span>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Person.Email" class="col-md-2 control-label"></label>
+            <label asp-for="Email" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Person.Email" class="form-control" />
-                <span asp-validation-for="Person.Email" class="text-danger"></span>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Person.Phone" class="col-md-2 control-label"></label>
+            <label asp-for="Phone" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Person.Phone" class="form-control" />
-                <span asp-validation-for="Person.Phone" class="text-danger"></span>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
         </div>
     </div>

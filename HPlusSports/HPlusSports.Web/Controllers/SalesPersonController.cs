@@ -38,7 +38,7 @@ namespace HPlusSports.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(EditSalespersonViewModel vm)
         {
-            await _salesPersonService.UpdateSalesPersonContact(vm.Person);
+            await _salesPersonService.UpdateSalesPersonContact(vm.GetPerson());
 
             return Redirect("/SalesPerson/Index");
         }
