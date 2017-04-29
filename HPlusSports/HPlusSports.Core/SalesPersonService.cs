@@ -1,8 +1,5 @@
 ﻿using HPlusSports.DAL;
 using HPlusSports.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace HPlusSports.Core
@@ -24,7 +21,13 @@ namespace HPlusSports.Core
             var group = await _salesGroupRepo.GetByID(groupId);
             person.SalesGroup = group;
             _salesRepo.Save(person);
+            await _salesRepo.SaveChanges();
         }
 
+        public async Task UpdatePerson(Salesperson person)
+        {
+            _salesRepo.Save(person);
+            await _salesRepo.SaveChanges();
+        }
     }
 }
