@@ -10,6 +10,7 @@ namespace HPlusSports.Core
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<ISalesPersonService, SalesPersonService>();
 
         }
     }

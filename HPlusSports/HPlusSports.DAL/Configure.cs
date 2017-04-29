@@ -19,7 +19,8 @@ namespace HPlusSports.DAL
                 .AddScoped<IOrderRepository, OrderRepository>()
                 .AddScoped<IRepository<Customer>, AtomicRepository<Customer>>()
                 .AddScoped<IRepository<Product>, AtomicRepository<Product>>()
-                .AddScoped<ISalesPersonRepository, SalesPersonRepository>();
+                .AddScoped<ISalesPersonRepository, SalesPersonRepository>()
+                .AddScoped<ITrackingRepository<SalesGroup>, TrackingRepository<SalesGroup>>();
         }
     }
 }
