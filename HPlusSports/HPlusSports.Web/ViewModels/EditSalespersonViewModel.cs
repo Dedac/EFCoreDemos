@@ -10,11 +10,13 @@ namespace HPlusSports.Web.ViewModels
     {
         private Salesperson person;
 
+        public EditSalespersonViewModel() { }
         public EditSalespersonViewModel(Salesperson person)
         {
             this.person = person;
         }
 
-        public Salesperson Person { get { return person; } }
+        public Salesperson Person { get { return person; } set { person = value; } }
+
     }
 }

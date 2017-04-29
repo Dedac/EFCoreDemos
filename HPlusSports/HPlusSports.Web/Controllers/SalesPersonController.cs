@@ -24,7 +24,7 @@ namespace HPlusSports.Web.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var salesPeople = await _salesPersonRepo.GetAll();
+            var salesPeople = await _salesPersonRepo.GetWithOrders();
             return View(salesPeople);
         }
 
@@ -38,9 +38,9 @@ namespace HPlusSports.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(EditSalespersonViewModel vm)
         {
-            await _salesPersonService.UpdatePerson(vm.Person);
+            await _salesPersonService.UpdateSalesPersonContact(vm.Person);
 
-            return Redirect("Index");
+            return Redirect("/SalesPerson/Index");
         }
 
     }

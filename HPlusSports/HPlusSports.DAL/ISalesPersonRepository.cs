@@ -7,5 +7,6 @@ namespace HPlusSports.DAL
     public interface ISalesPersonRepository : ITrackingRepository<Salesperson>
     {
         Task<List<Salesperson>> GetSalesPeopleByStateGroup(string state);
+        Task<List<Salesperson>> GetWithOrders();
     }
 }

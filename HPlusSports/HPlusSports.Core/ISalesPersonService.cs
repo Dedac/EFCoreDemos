@@ -7,6 +7,6 @@ namespace HPlusSports.Core
     public interface ISalesPersonService
     {
         Task MoveSalesPersonToGroup(int salesPersonId, int groupId);
-        Task UpdatePerson(Salesperson person);
+        Task UpdateSalesPersonContact(Salesperson person);
     }
 }
