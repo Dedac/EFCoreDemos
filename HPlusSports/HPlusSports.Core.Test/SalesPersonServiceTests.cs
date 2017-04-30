@@ -4,6 +4,8 @@ using HPlusSports.DAL;
 using Microsoft.EntityFrameworkCore;
 using HPlusSports.Models;
 using System.Threading.Tasks;
+using Moq;
+using HPlusSports.Core.Test.Mocks;
 
 namespace HPlusSports.Core.Test
 {
@@ -13,32 +15,20 @@ namespace HPlusSports.Core.Test
         [TestMethod]
         public async Task MoveSalesPersonWithoutGroupToExistingGroup()
         {
-            using (var context = GetContext("MovePersonTest"))
-            {
-                context.Add(new SalesGroup() { State = "TEST", Type = 1, Id = 1 });
-                context.Add(new Salesperson() { Id = 1 });
-                await context.SaveChangesAsync();
+            var salesRepo = new SalesPersonRepositoryMock();
+            var salesGroupRepo = new SalesGroupRepositoryMock();
 
-                var repo = new SalesPersonRepository(context);
-                var groupRepo = new TrackingRepository<SalesGroup>(context);
-                var service = new SalesPersonService(repo, groupRepo);
+                salesGroupRepo.Add(new SalesGroup() { State = "TEST", Type = 1, Id = 1 });
+                salesRepo.Add(new Salesperson() { Id = 1 });
+
+                var service = new SalesPersonService(salesRepo, salesGroupRepo);
 
                 await service.MoveSalesPersonToGroup(1, 1);
-            }
 
-            using (var context = GetContext("MovePersonTest"))
-            {
-                var person = context.Find<Salesperson>(1);
-                Assert.IsTrue(person.SalesGroupState == "TEST");
-            }
-
+                var person = await salesRepo.GetByID(1);
+             
+                Assert.IsTrue(person.SalesGroup.State == "TEST");
         }
 
-        private static HPlusSportsContext GetContext(string name)
-        {
-            var dbOptions = new DbContextOptionsBuilder<HPlusSportsContext>()
-                .UseInMemoryDatabase(name).Options;
-            return new HPlusSportsContext(dbOptions);
-        }
     }
 }
