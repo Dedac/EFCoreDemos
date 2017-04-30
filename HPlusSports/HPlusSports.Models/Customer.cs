@@ -16,7 +16,7 @@ namespace HPlusSports.Models
         public string Email
         {
             get { return customerEmail; }
-            set { customerEmail = value.ToLower(); }
+            set { customerEmail = value?.ToLower(); }
         }
         public string Phone { get; set; }
         public string Address { get; set; }
